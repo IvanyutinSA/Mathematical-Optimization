@@ -1,0 +1,24 @@
+# !/usr/bin/python
+from sys import argv
+import algorithms.one_dimentional as od
+
+def default():
+    print('tests')
+
+def first_lab():
+    f = lambda x: x**2+2*x-4
+    a = -2
+    b = 1
+
+    print(f'fibonacci: {round(od.fibonacci(f, a, b), 2)}')
+    print(f'dichotomy: {round(od.dichotomy(f, a, b), 2)}')
+    print(f'golden section: {od.golden_section(f, a, b)}')
+
+
+argv.append('empty')
+match argv[1]:
+    case '1':
+        first_lab()
+    case 'empty':
+        default()
+
