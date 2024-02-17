@@ -12,6 +12,8 @@ def first_lab():
 
     print(f'fibonacci: {round(od.fibonacci(f, a, b), 2)}')
     print(f'dichotomy: {round(od.dichotomy(f, a, b), 2)}')
+    print(f'golden section: {od.golden_section(f, a, b)}')
+
 
 argv.append('empty')
 match argv[1]:
