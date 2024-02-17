@@ -46,7 +46,7 @@ def fibonacci(f, a, b, e=.0000001):
 
 from math import sqrt 
 
-def golden_section(f, a, b, eps=.01):
+def golden_section(f, a, b, eps=.0000001):
     constF = (1 + sqrt(5))/2
     while (b-a >= eps):
         x1 = b - (b - a)/constF
