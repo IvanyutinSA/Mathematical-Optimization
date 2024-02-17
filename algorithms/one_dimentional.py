@@ -46,3 +46,16 @@ def fibonacci(f, a, b, n = 1000):
 
     return min(f1, f2)
 
+from math import sqrt 
+
+def golden_section(f, a, b, eps=.01):
+    constF = (1 + sqrt(5))/2
+    while (b-a >= eps):
+        x1 = b - (b - a)/constF
+        x2 = a + (b - a)/constF
+        if f(x1) >= f(x2):
+            a = x1
+        else: b = x2
+    x = (a + b)/2 
+    return f(x)   
+
