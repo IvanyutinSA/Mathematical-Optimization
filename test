@@ -3,7 +3,7 @@ from sys import argv
 import algorithms.one_dimentional as od
 
 def default():
-    print('tests')
+    print('...nothing')
 
 def first_lab():
     f = lambda x: x**2+2*x-4
@@ -13,10 +13,14 @@ def first_lab():
     print(f'fibonacci: {round(od.fibonacci(f, a, b), 2)}')
     print(f'dichotomy: {round(od.dichotomy(f, a, b), 2)}')
 
-argv.append('empty')
-match argv[1]:
-    case '1':
-        first_lab()
-    case 'empty':
-        default()
+def second_lab():
+    pass
+
+funcs = {
+    '1': first_lab,
+    '2': second_lab,
+}
+
+argv.append('')
+funcs.get(argv[1], default)()
 
