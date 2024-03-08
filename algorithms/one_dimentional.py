@@ -54,6 +54,7 @@ def golden_section(f, a, b, eps=.0000001):
         if f(x1) >= f(x2):
             a = x1
         else: b = x2
-    x = (a + b)/2 
-    return f(x)   
+    x = (a + b)/2
+    
+    return x, f(x)   
 
