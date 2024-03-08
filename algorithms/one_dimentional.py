@@ -12,7 +12,7 @@ def dichotomy(f, a, b, e=.0000001):
 
     return f((a+b)/2)
 
-def fibonacci(f, a, b, e=.0000001):
+def fibonacci(f, a, b, e=.0000001, solution=False):
     F = [0, 1, 1]
 
     while F[-1] < (b-a)/e:
@@ -20,6 +20,7 @@ def fibonacci(f, a, b, e=.0000001):
 
     n = len(F) - 1
     f1, f2 = float('inf'), float('inf')
+    x1, x2 = 0, 0
 
     while n > 2:
         L = b-a 
@@ -42,6 +43,8 @@ def fibonacci(f, a, b, e=.0000001):
             f1 = f(x1)
         n -= 1
 
+    if solution:
+        return x1 if f1 < f2 else x2 
     return min(f1, f2)
 
 from math import sqrt 
