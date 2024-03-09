@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from sys import argv
 import numpy as np
+import sympy
 import algorithms.one_dimentional as od
 import algorithms.multi_dimentional as md
 
@@ -21,14 +22,20 @@ def second_lab():
     A = 10
     a = 3
     b = 2
-    f = lambda x: A-(x[0]-a)*np.exp(a-x[0])-(x[1]-b)*np.exp(-(b-x[0]))
+    f = lambda x: A-(x[0]-a)*np.exp(a-x[0])-(x[1]-b)*np.exp(-(x[1]-b))
+    symb_f = lambda x: A-(x[0]-a)*sympy.exp(a-x[0])-(x[1]-b)*sympy.exp(-(x[1]-b))
+    
     x = np.random.normal(size=(2,))
     x = (0, 0)
+    deltaX = np.array([0.8, 0.8])
 
     gs = round(md.gauss_seidel(f, x)['value'], 2)
     gd = round(md.gradient_descent(f, x)['value'], 2)
     print(f'gauss-seidel: {gs}')
     print(f'gradient_desent: {gd}')
+    print(f'hook-jeeves: {md.Hook_Jeeves(f, symb_f, deltaX, x)}')
+    print(f'rosenbrock: {md.Rosenbrock(x, f, symb_f)}')
+
 
 funcs = {
     '1': first_lab,
