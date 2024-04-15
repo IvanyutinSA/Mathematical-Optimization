@@ -2,8 +2,10 @@
 from sys import argv
 import numpy as np
 import sympy
+import sympy as sp
 import algorithms.one_dimentional as od
 import algorithms.multi_dimentional as md
+import algorithms.conditional as co
 
 def default():
     print('...nothing')
@@ -37,9 +39,24 @@ def second_lab():
     print(f'rosenbrock: {md.Rosenbrock(x, f, symb_f)}')
 
 
+def third_lab():
+    x, y = sp.symbols('x y')
+    # f = x**2 - y**2
+    # g = x + y - 1
+
+    f = x - y
+    g = x**2 + y**2 - 1
+
+    vars = [x, y]
+
+
+    print(f'Lagrange multipliers: {co.lagrange_multipliers(f, [g], vars)}')
+
+
 funcs = {
     '1': first_lab,
     '2': second_lab,
+    '3': third_lab,
 }
 
 for key in argv[1:]:
