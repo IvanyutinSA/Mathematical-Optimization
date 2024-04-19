@@ -1,3 +1,7 @@
+# import sys 
+# if "/home/timofey/Desktop/Maths_optimization/Mathematical-Optimization" not in sys.path:
+#     sys.path.append("/home/timofey/Desktop/Maths_optimization/Mathematical-Optimization")
+
 import numpy as np
 import numdifftools as nd
 from algorithms.one_dimentional import fibonacci
@@ -165,3 +169,15 @@ def Rosenbrock(x1, f, symb_f, eps=1e-5):
         xNew = np.array([comp for comp in y]) 
 
     return xNew, f(xNew)
+
+# import time
+# start_time = time.time()
+# hook()
+# h_time = time.time() - start_time   # ~2,9сек
+# print(f"hook: {h_time}")
+
+# rosen()
+# r_time = time.time() - start_time
+# print(f"rosen: {r_time}")  # ~5,7сек
+
+# замерить время выполнения каждого из методов
