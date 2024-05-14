@@ -46,10 +46,35 @@ def third_lab():
 
     f = x - y
     g = x**2 + y**2 - 1
+    f1 = lambda x: x[0] - x[1]
+    g1 = lambda x: x[0]**2 + x[1]**2 - 1
 
     vars = [x, y]
+    
+    min_f, min_x = co.Zoutendijk(f1, constraints= [g1], dim=2, Biggest_number_in_constr=5)
+
+    f_3 = lambda x: 2*x[0]**2 + 2*x[1]**2 - 2*x[0]*x[1] - 4*x[0] - 6*x[1]
+    initial_x = np.array([0, 1])
+    H = np.array([])
+    A_coeffs = np.array([
+        [1, 1, 2],
+        [1, 5, 5],
+        [-1, 0, 0],
+        [0, -1, 0]
+    ])
+    con1 = lambda x: x[0] + x[1] - 2 
+    con2 = lambda x: x[0] + 5*x[1] - 5
+    con3 = lambda x: -x[0]
+    con4 = lambda x: -x[1]
+
+    A = [con1, con2, con3, con4]
+
+    optimal_x, value = co.Rosen(A, A_coeffs, H, f_3, initial_x)
 
 
+    print('--------------------------------------')
+    print(f'Rosen: optimal x = {optimal_x}, function value = {value}')
+    print(f'Zoutendijk: function value = {min_f}, min_x = {min_x}')
     print(f'Lagrange multipliers: {co.lagrange_multipliers(f, [g], vars)}')
 
 
