@@ -6,6 +6,8 @@ import sympy as sp
 import algorithms.one_dimentional as od
 import algorithms.multi_dimentional as md
 import algorithms.conditional as co
+from algorithms.penalty_function import penalty_function_method
+
 
 def default():
     print('...nothing')
@@ -78,10 +80,24 @@ def third_lab():
     print(f'Lagrange multipliers: {co.lagrange_multipliers(f, [g], vars)}')
 
 
+def fourth_lab():
+    f = lambda x: x[0]**2 + x[1]**2
+    constraint1 = lambda x: (x[0] - 7)**2 + (x[1] -7)**2 - 18
+    ineq_constraints = [constraint1]
+    eq_constraints = []
+    optimal_x = penalty_function_method(x0, f, r_initial, r_increment, ineq_constraints, eq_constraints)
+    print("Метод штафных функций: ", optimal_x)
+
+
+x0 = [2, 2]
+r_initial = 1
+r_increment = 10
+
 funcs = {
     '1': first_lab,
     '2': second_lab,
     '3': third_lab,
+    '4': fourth_lab,
 }
 
 for key in argv[1:]:
