@@ -8,6 +8,10 @@ import algorithms.multi_dimentional as md
 import algorithms.conditional as co
 from algorithms.penalty_function import penalty_function_method
 
+import sys
+if "/home/timofey/Desktop/Maths_optimization/Mathematical-Optimization/algorithms" not in sys.path:
+    sys.path.append("/home/timofey/Desktop/Maths_optimization/Mathematical-Optimization/algorithms")
+from algorithms.multi_objective import additive_convolution
 
 def default():
     print('...nothing')
@@ -88,6 +92,14 @@ def fourth_lab():
     optimal_x = penalty_function_method(x0, f, r_initial, r_increment, ineq_constraints, eq_constraints)
     print("Метод штафных функций: ", optimal_x)
 
+def fifth_lab():
+    initial_x = np.zeros(2)
+    f1 = lambda x: 2*(x[0]-6)**2 + 3*(x[1]-6)**2
+    f2 = lambda x: 3*(x[0]+4)**2 + (x[1]+6)**2
+    f3 = lambda x: (x[0]+7)**2 + 2*(x[1]-8)**2
+    fs = [f1, f2, f3]
+
+    print("Aддитивная свёртка: ",additive_convolution(fs, initial_x))
 
 x0 = [2, 2]
 r_initial = 1
@@ -98,6 +110,8 @@ funcs = {
     '2': second_lab,
     '3': third_lab,
     '4': fourth_lab,
+    '5': fifth_lab,
+
 }
 
 for key in argv[1:]:
