@@ -49,15 +49,15 @@ def fibonacci(f, a, b, e=.0000001, solution=False):
 
 from math import sqrt 
 
-def golden_section(f, a, b, eps=.0000001):
-    constF = (1 + sqrt(5))/2
+def golden_section(f, a, b, eps=1e-7):
+    gr = (1 + sqrt(5))/2
     while (b-a >= eps):
-        x1 = b - (b - a)/constF
-        x2 = a + (b - a)/constF
+        x1 = b - (b - a)/gr
+        x2 = a + (b - a)/gr
         if f(x1) >= f(x2):
             a = x1
         else: b = x2
-    x = (a + b)/2
+    optimal_x = (a + b)/2
     
-    return x, f(x)   
+    return optimal_x   
 
